@@ -1,21 +1,21 @@
-import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
 
-Vue.use(VueRouter);
-
-const routes = [
-  {
-    path: "/",
-    name: "home",
-    component: Home
-  }
-];
+// 导入对应的路由组建
+import Home from "../components/tabar/homeContainer.vue";
+import Member from "../components/tabar/memberContainer.vue";
+import Shopcar from "../components/tabar/shopcarContainer.vue";
+import Search from "../components/tabar/searchContainer.vue";
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes
+  routes: [
+    // 配置路由规则
+    { path: "/", redirect: "/home" }, // 初识默认高亮
+    { path: "/home", component: Home },
+    { path: "/member", component: Member },
+    { path: "/shopcar", component: Shopcar },
+    { path: "/search", component: Search }
+  ],
+  linkActiveClass: "mui-active" // 覆盖默认路由高亮类
 });
 
 export default router;
